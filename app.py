@@ -136,3 +136,4 @@ if st.button("Predict Survival"):
 
         except ValueError as e:
             st.error(f"Input error: {e}")
+    st.write(f"Model confidence (probability of 'Survival'): **{prediction[0]:.2f}**")
