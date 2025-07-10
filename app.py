@@ -1,8 +1,15 @@
 import streamlit as st
 import pickle
+import os
 import numpy as np
 
-# Load model and encoders
+st.write("Checking model and encoder files:")
+for fname in ["lr.pkl","le_sex.pkl","le_cabin.pkl","le_ticket.pkl","le_embark.pkl"]:
+    st.write(f"{fname}: {'✅ Found' if os.path.exists(fname) else '❌ Missing'}")
+
+if not os.path.exists("lr.pkl"):
+    st.error("❌ Model file 'lr.pkl' not found. The app cannot proceed.")
+    st.stop()
 with open('lr.pkl', 'rb') as f:
     model = pickle.load(f)
 
